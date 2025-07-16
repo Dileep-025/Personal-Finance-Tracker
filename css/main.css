@@ -1,0 +1,240 @@
+/* Neon Finance Lite Theme - Enhanced UI */
+
+:root {
+    --bg-primary: #12121A;
+    --bg-secondary: #1C1C28;
+    --card-bg: #1F1F2E;
+    --text-primary: #F1F1F1;
+    --text-secondary: #A0A0B2;
+    --income-color: #5AF3A5;
+    --expense-color: #FF7D7D;
+    --border-color: #33334D;
+    --shadow-color: rgba(90, 243, 165, 0.15);
+    --glow-color: rgba(90, 243, 165, 0.3);
+
+    --font-family: 'Inter', sans-serif;
+    --font-size-sm: 12px;
+    --font-size-md: 14px;
+    --font-size-lg: 16px;
+    --font-size-xl: 24px;
+
+    --spacing-xs: 8px;
+    --spacing-sm: 12px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: var(--font-size-md);
+}
+
+.container {
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.header {
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(28, 28, 40, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.logo {
+    height: 32px;
+    width: auto;
+}
+
+.app-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: var(--font-size-xl);
+    text-align: center;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+}
+
+.main-layout {
+    display: grid;
+    gap: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+}
+
+/* Tablet and Desktop Layout */
+@media (min-width: 768px) {
+    .main-layout {
+        grid-template-columns: 1fr 350px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .main-layout {
+        grid-template-columns: 1fr 400px;
+    }
+}
+
+.layout-main {
+    display: grid;
+    gap: var(--spacing-lg);
+}
+
+.summary-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.summary-item {
+    text-align: center;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    background-color: var(--bg-secondary);
+}
+
+.summary-item .icon {
+    font-size: 20px;
+    margin-bottom: var(--spacing-xs);
+}
+
+.amount {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+#transaction-form {
+    display: grid;
+    gap: var(--spacing-md);
+}
+
+@media (min-width: 500px) {
+    #transaction-form {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .form-control:nth-child(1) { grid-column: 1 / -1; }
+    .btn-primary { grid-column: 1 / -1; }
+}
+
+.form-control input, .form-control select {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: var(--font-size-md);
+}
+
+.btn-primary:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px var(--glow-color);
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+#transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#transaction-table th, #transaction-table td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-align: left;
+    white-space: nowrap;
+}
+
+#transaction-table thead {
+    border-bottom: 2px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+}
+
+#transaction-table tbody tr {
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s;
+}
+
+#transaction-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+#transaction-table tbody tr:hover {
+    background-color: var(--bg-secondary);
+}
+
+.status-cell {
+    font-size: var(--font-size-lg);
+}
+
+.income-color { color: var(--income-color); }
+.expense-color { color: var(--expense-color); }
+
+.delete-btn {
+    background: none; border: none; color: var(--text-secondary);
+    cursor: pointer; font-size: var(--font-size-lg);
+    transition: color 0.3s;
+}
+
+.delete-btn:hover { color: var(--expense-color); }
+
+.empty-message {
+    text-align: center;
+    padding: var(--spacing-lg);
+    color: var(--text-secondary);
+}
+
+.charts-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+}
+
+@media (min-width: 600px) {
+    .charts-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
