@@ -1,6 +1,7 @@
 const app = {
   transactions: [],
   currentTheme: "dark",
+  currentTransactionId: null,
 
   init: () => {
     // Show loader
@@ -56,6 +57,19 @@ const app = {
   setupEventListeners: () => {
     ui.form.addEventListener("submit", app.addTransaction);
     ui.themeToggleBtn.addEventListener("click", app.toggleTheme);
+    ui.editForm.addEventListener("submit", app.editTransaction);
+    ui.cancelEditBtn.addEventListener("click", ui.hideEditModal);
+    ui.confirmDeleteBtn.addEventListener("click", app.deleteTransaction);
+    ui.cancelDeleteBtn.addEventListener("click", ui.hideDeleteModal);
+
+    window.addEventListener("click", (e) => {
+        if (e.target === ui.editModal) {
+            ui.hideEditModal();
+        }
+        if (e.target === ui.deleteModal) {
+            ui.hideDeleteModal();
+        }
+    });
   },
 
   addTransaction: (e) => {
@@ -86,11 +100,45 @@ const app = {
     ui.clearForm();
   },
 
-  deleteTransaction: (id) => {
-    app.transactions = app.transactions.filter((t) => t.id !== id);
+  showEditModal: (id) => {
+    app.currentTransactionId = id;
+    const transaction = app.transactions.find((t) => t.id === id);
+    ui.showEditModal(transaction);
+  },
+
+  editTransaction: (e) => {
+    e.preventDefault();
+    const id = app.currentTransactionId;
+    const title = ui.editTitleInput.value.trim();
+    const amount = parseFloat(ui.editAmountInput.value);
+    const type = ui.editTypeInput.value;
+    const category = ui.editCategoryInput.value;
+
+    if (!title || isNaN(amount) || amount <= 0) {
+      alert("Please enter a valid title and amount.");
+      return;
+    }
+
+    app.transactions = app.transactions.map((t) =>
+      t.id === id ? { id, title, amount, type, category } : t
+    );
+
     storage.saveTransactions(app.transactions);
-    ui.removeTransactionFromDOM(id);
     app.update();
+    ui.hideEditModal();
+  },
+
+  showDeleteModal: (id) => {
+    app.currentTransactionId = id;
+    ui.showDeleteModal();
+  },
+
+  deleteTransaction: () => {
+    app.transactions = app.transactions.filter((t) => t.id !== app.currentTransactionId);
+    storage.saveTransactions(app.transactions);
+    ui.removeTransactionFromDOM(app.currentTransactionId);
+    app.update();
+    ui.hideDeleteModal();
   },
 
   update: () => {
