@@ -11,6 +11,7 @@ const ui = {
   categoryInput: document.getElementById("category"),
   loader: document.getElementById("loader"),
   themeToggleBtn: document.getElementById("theme-toggle"),
+  downloadPdfBtn: document.getElementById("download-pdf-btn"),
 
   // Edit Modal Elements
   editModal: document.getElementById("edit-modal"),
@@ -58,11 +59,13 @@ const ui = {
   renderTransactions: (transactions) => {
     ui.transactionListEl.innerHTML = "";
     if (transactions.length === 0) {
+      ui.transactionListEl.classList.add("empty-list");
       const row = document.createElement("tr");
       row.innerHTML = `<td colspan="5" class="empty-message">No transactions yet.</td>`;
       ui.transactionListEl.appendChild(row);
       return;
     }
+    ui.transactionListEl.classList.remove("empty-list");
     const sortedTransactions = [...transactions].sort((a, b) => b.id - a.id);
     sortedTransactions.forEach((transaction) => {
       const row = ui.createTransactionRow(transaction);

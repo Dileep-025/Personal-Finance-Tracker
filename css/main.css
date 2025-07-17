@@ -358,6 +358,23 @@ body {
   color: var(--text-secondary);
 }
 
+#transaction-table tbody.empty-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px; /* Adjust as needed */
+  width: 100%;
+}
+
+#transaction-table tbody.empty-list tr {
+  width: 100%;
+}
+
+#transaction-table tbody.empty-list td {
+  text-align: center;
+  width: 100%;
+}
+
 .charts-container {
   display: grid;
   grid-template-columns: 1fr;

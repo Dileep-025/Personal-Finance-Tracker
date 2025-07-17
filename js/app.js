@@ -61,6 +61,7 @@ const app = {
     ui.cancelEditBtn.addEventListener("click", ui.hideEditModal);
     ui.confirmDeleteBtn.addEventListener("click", app.deleteTransaction);
     ui.cancelDeleteBtn.addEventListener("click", ui.hideDeleteModal);
+    
 
     window.addEventListener("click", (e) => {
         if (e.target === ui.editModal) {
@@ -100,6 +101,8 @@ const app = {
     ui.clearForm();
   },
 
+  
+
   showEditModal: (id) => {
     app.currentTransactionId = id;
     const transaction = app.transactions.find((t) => t.id === id);
@@ -108,7 +111,7 @@ const app = {
 
   editTransaction: (e) => {
     e.preventDefault();
-    const id = app.currentTransactionId;
+    const id = ui.editIdInput.value;
     const title = ui.editTitleInput.value.trim();
     const amount = parseFloat(ui.editAmountInput.value);
     const type = ui.editTypeInput.value;

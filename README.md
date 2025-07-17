@@ -15,6 +15,14 @@ TrackNest is a simple yet effective personal finance tracker application designe
 - **Indian Rupee (₹) Support**: All financial figures are displayed in Indian Rupees.
 - **Responsive Design**: Optimized for seamless use across various devices, from mobile phones to desktop computers.
 
+## Usage
+
+1.  **Adding a Transaction**: Fill out the 'Add New Transaction' form with the title, amount, type (income/expense), and category, then click 'Add Transaction'.
+2.  **Viewing Summary**: Your total income, expenses, and current balance are displayed at the top of the page.
+3.  **Managing Transactions**: View all your transactions in the 'Transaction History' table. You can edit or delete transactions using the respective buttons.
+4.  **Analyzing Trends**: The 'Expense Distribution' pie chart and 'Monthly Trends' line chart provide visual insights into your spending habits.
+5.  **Changing Theme**: Click the sun/moon icon in the header to toggle between light and dark themes.
+
 ## Technologies Used
 
 - HTML5
@@ -40,15 +48,27 @@ To get a local copy up and running, follow these simple steps:
 
     a. **Install `http-server` globally (if you haven't already)**:
     `bash
-    npm install -g http-server
-    `
+npm install -g http-server
+`
 
     b. **Navigate to the project directory and start the server**:
     `bash
-    cd "D:/VS Code/TrackNest/"
-    http-server -c-1
-    `
+cd "D:/VS Code/Personal Finance Trecker/"
+http-server -c-1
+`
 
     c. Open your browser and go to `http://localhost:8080` (or the port indicated by `http-server`).
 
 Enjoy tracking your finances with TrackNest!
+
+## Contributing
+
+Contributions are welcome! If you have suggestions for improvements, new features, or bug fixes, please follow these steps:
+
+1.  **Fork the repository**.
+2.  **Create a new branch** for your feature or bug fix: `git checkout -b feature-name` or `git checkout -b bugfix-name`.
+3.  **Make your changes** and ensure they adhere to the existing code style.
+4.  **Test your changes** thoroughly.
+5.  **Commit your changes** with a clear and concise message.
+6.  **Push your branch** to your forked repository.
+7.  **Open a Pull Request** to the `main` branch of the original repository, describing your changes in detail.
