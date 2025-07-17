@@ -74,14 +74,14 @@ body {
 }
 
 .container {
-  width: 95%;
+  width: 95%; /* Revert to 95% or 100% with padding */
   max-width: 1600px;
   margin: 0 auto;
-  padding: 0 var(--spacing-md);
+  padding: 0 var(--spacing-md); /* Add padding back to container */
 }
 
 .header {
-  padding: var(--spacing-md) 0;
+  padding: var(--spacing-md) 0; /* Keep vertical padding */
   border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
@@ -97,6 +97,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between; /* Space out title and toggle */
+  /* Removed padding from here, as container now handles it */
 }
 
 .logo-container {
@@ -144,6 +145,7 @@ body {
 @media (min-width: 768px) {
   .main-layout {
     grid-template-columns: 1fr 350px; /* Main content takes remaining space, sidebar 350px */
+    grid-template-areas: "main sidebar";
   }
 }
 
@@ -278,31 +280,31 @@ body {
 #transaction-table td {
   padding: var(--spacing-sm) var(--spacing-md);
   text-align: left;
-  white-space: nowrap; /* Prevent text from wrapping */
-  min-width: 180px; /* Increased minimum width for columns */
+  /* white-space: nowrap; */ /* Removed to allow text wrapping */
+  /* min-width: 180px; */ /* Removed to allow more flexibility */
 }
 
 #transaction-table th:nth-child(2), /* Title column */
 #transaction-table td:nth-child(2) {
-  min-width: 200px; /* Specific min-width for Title */
+  /* min-width: 200px; */ /* Removed */
 }
 
 #transaction-table th:nth-child(3), /* Category column */
 #transaction-table td:nth-child(3) {
-  min-width: 180px; /* Specific min-width for Category */
+  /* min-width: 180px; */ /* Removed */
 }
 
 #transaction-table th:nth-child(1), /* Status column */
 #transaction-table td:nth-child(1) {
-  width: 80px;
-  min-width: 80px;
+  width: auto;
+  min-width: auto;
   text-align: center;
 }
 
 #transaction-table th:nth-child(5), /* Action column */
 #transaction-table td:nth-child(5) {
-  width: 80px;
-  min-width: 80px;
+  width: auto;
+  min-width: auto;
   text-align: center;
 }
 
@@ -373,7 +375,7 @@ body {
 }
 
 .chart-card {
-  height: 300px;
+  max-height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -433,4 +435,35 @@ body {
   background-color: var(--hover-overlay);
   box-shadow: 0 0 10px var(--shadow-color);
   transform: translateY(-2px); /* Slight lift on hover */
+}
+
+@media (max-width: 767px) {
+  #transaction-table thead {
+    display: none;
+  }
+
+  #transaction-table, #transaction-table tbody, #transaction-table tr, #transaction-table td {
+    display: block;
+    width: 100%;
+  }
+
+  #transaction-table tr {
+    margin-bottom: 15px;
+  }
+
+  #transaction-table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  #transaction-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-weight: bold;
+    text-align: left;
+  }
 }

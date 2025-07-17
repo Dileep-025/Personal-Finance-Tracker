@@ -73,7 +73,7 @@ const charts = {
                     label += ": ";
                   }
                   if (context.parsed !== null) {
-                    label += "$" + context.parsed.toFixed(2);
+                    label += "₹" + context.parsed.toFixed(2);
                   }
                   return label;
                 },

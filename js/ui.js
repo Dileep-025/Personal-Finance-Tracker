@@ -20,13 +20,13 @@ const ui = {
       .filter((t) => t.type === "expense")
       .reduce((sum, t) => sum + t.amount, 0);
     const balance = income - expense;
-    ui.totalIncomeEl.innerHTML = `<i class="fas fa-arrow-up icon"></i> ${income.toFixed(
+    ui.totalIncomeEl.innerHTML = `<i class="fas fa-arrow-up icon"></i> ₹${income.toFixed(
       2
     )}`;
-    ui.totalExpenseEl.innerHTML = `<i class="fas fa-arrow-down icon"></i> ${expense.toFixed(
+    ui.totalExpenseEl.innerHTML = `<i class="fas fa-arrow-down icon"></i> ₹${expense.toFixed(
       2
     )}`;
-    ui.balanceEl.innerHTML = `<i class="fas fa-wallet icon"></i> ${balance.toFixed(
+    ui.balanceEl.innerHTML = `<i class="fas fa-wallet icon"></i> ₹${balance.toFixed(
       2
     )}`;
   },
